@@ -2,21 +2,18 @@
 
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import {
   Box,
-  Button,
   Stack,
   Typography,
-  Modal,
   TextField,
   IconButton,
   Container,
 } from "@mui/material";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+
 import SearchIcon from "@mui/icons-material/Search";
-import AddIcon from "@mui/icons-material/Add";
 
 // Component
 import Home from "../components/Home/Home";
@@ -37,13 +34,7 @@ const darkTheme = createTheme({
 });
 
 const MainPage: React.FC = () => {
-  const [dateTime, setDateTime] = useState(new Date());
   const [searchTerm, setSearchTerm] = useState("");
-
-  useEffect(() => {
-    const timer = setInterval(() => setDateTime(new Date()), 1000);
-    return () => clearInterval(timer);
-  }, []);
 
   return (
     <ThemeProvider theme={darkTheme}>

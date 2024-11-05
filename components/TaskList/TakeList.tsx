@@ -6,7 +6,7 @@ interface TaskListProps {
   tasks: Task[];
   onDeleteTask: (id: number) => void;
   onUpdateTask: (id: number, title: string) => void;
-  onChangeStatus: (id: number, status: string) => void;
+  onChangeStatus: (id: number, status: Task["status"]) => void;
 }
 
 const TaskList: React.FC<TaskListProps> = ({
@@ -67,7 +67,9 @@ const TaskList: React.FC<TaskListProps> = ({
               {task.title}
             </Typography>
           ) : (
-            <Typography variant="body1">{task.title}</Typography>
+            <Typography variant="body1" sx={{ textDecoration: "none" }}>
+              {task.title}
+            </Typography>
           )}
           {task.status === "PENDING" ? (
             <Button
@@ -86,6 +88,7 @@ const TaskList: React.FC<TaskListProps> = ({
               Mark as PENDING
             </Button>
           )}
+
           {editingTaskId === task.id ? (
             <Button
               variant="contained"
